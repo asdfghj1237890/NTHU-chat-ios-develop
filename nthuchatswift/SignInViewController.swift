@@ -172,7 +172,7 @@ class SignInViewController: UIViewController{
                 var title_name = ""
                 for i in 0..<titles.size()-1 {
                     var titlename = try! titles.get(i).text()
-                    titlename = titlename.replacingOccurrences(of: "[A-Za-z0-9() &,-]*", with: "",options: .regularExpression)
+                    titlename = titlename.replacingOccurrences(of: "[A-Za-z0-9() &,-:\"]*", with: "",options: .regularExpression)
                     //print("course: " + titlename)
                     title_name = title_name + titlename + "@"
                 }

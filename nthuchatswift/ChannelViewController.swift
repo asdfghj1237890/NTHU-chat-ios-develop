@@ -2,16 +2,12 @@ import Photos
 import UIKit
 
 import Firebase
-import GoogleMobileAds
 import Crashlytics
 import SDWebImage
 import UITextView_Placeholder
 import IQKeyboardManagerSwift
 import SideMenu
 import CoreData
-
-//let kBannerAdUnitID = "ca-app-pub-3940256099942544/2934735716"
-let kBannerAdUnitID = "ca-app-pub-3589269405021012/7205088015"
 
 class ChannelViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,UITextViewDelegate, UINavigationControllerDelegate, UISideMenuNavigationControllerDelegate{
     @IBOutlet weak var backView: UIView!
@@ -21,7 +17,6 @@ class ChannelViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var textField: UITextView!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var countLabel: UILabel!
-    @IBOutlet weak var banner: GADBannerView!
     @IBOutlet weak var clientTable: UITableView!
     @IBOutlet weak var heightconst: NSLayoutConstraint!
     
@@ -69,11 +64,10 @@ class ChannelViewController: UIViewController, UITableViewDataSource, UITableVie
         configureDatabase()
         configureRemoteConfig()
         fetchConfig()
-        loadAd()
         
         setupSideMenu()
         
-        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.shared.enable = true
         
         handle = Auth.auth().addStateDidChangeListener(){(auth, user) in
             if user == nil {
@@ -83,7 +77,7 @@ class ChannelViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
         
-        if (IQKeyboardManager.sharedManager().keyboardShowing){
+        if (IQKeyboardManager.shared.keyboardShowing){
             self.view.endEditing(true)
         }
     }
@@ -106,7 +100,7 @@ class ChannelViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func sideMenuWillAppear(menu: UISideMenuNavigationController, animated: Bool) {
         print("SideMenu Appearing! (animated: \(animated))")
-        IQKeyboardManager.sharedManager().enable = false
+        IQKeyboardManager.shared.enable = false
     }
     
     func sideMenuDidAppear(menu: UISideMenuNavigationController, animated: Bool) {
@@ -119,7 +113,7 @@ class ChannelViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func sideMenuDidDisappear(menu: UISideMenuNavigationController, animated: Bool) {
         print("SideMenu Disappeared! (animated: \(animated))")
-        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.shared.enable = true
         self.view.endEditing(true)
     }
     
@@ -221,17 +215,12 @@ class ChannelViewController: UIViewController, UITableViewDataSource, UITableVie
         self.heightconst.constant = textViewMinHeight
         self.textField.isScrollEnabled = false
     }
-    
-    func loadAd() {
-        self.banner.adUnitID = kBannerAdUnitID
-        self.banner.rootViewController = self
-        self.banner.load(GADRequest())
-    }
+
     
     func configureRemoteConfig() {
         remoteConfig = RemoteConfig.remoteConfig()
         let remoteConfigSettings = RemoteConfigSettings(developerModeEnabled: true)
-        remoteConfig.configSettings = remoteConfigSettings!
+        remoteConfig.configSettings = remoteConfigSettings
     }
     
     func fetchConfig() {

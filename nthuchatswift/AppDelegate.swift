@@ -6,11 +6,12 @@ import SDWebImage
 import UITextView_Placeholder
 import CoreData
 import SwiftSoup
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate{
   var window: UIWindow?
-
+  let apiKey = "AIzaSyBA-yU2aeWdHH_S54PQ6A6EYfWjn7WpuF4"
   /*@available(iOS 9.0, *)
   func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any])
     -> Bool {
@@ -30,7 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
   }*/
     
   func application(_ application: UIApplication, didFinishLaunchingWithOptions
-    launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    GMSServices.provideAPIKey(apiKey)
     FirebaseApp.configure()
     //GIDSignIn.sharedInstance().delegate = self
     
@@ -44,9 +46,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         application.registerUserNotificationSettings(settings)
     }
     application.registerForRemoteNotifications()
-    //IQKeyboardManager.sharedManager().enable = true
-    IQKeyboardManager.sharedManager().canAdjustAdditionalSafeAreaInsets = true
-    IQKeyboardManager.sharedManager().enableAutoToolbar = false
+    //IQKeyboardManager.shared.enable = true
+    IQKeyboardManager.shared.canAdjustAdditionalSafeAreaInsets = true
+    IQKeyboardManager.shared.enableAutoToolbar = false
     Database.database().isPersistenceEnabled = true
     return true
   }

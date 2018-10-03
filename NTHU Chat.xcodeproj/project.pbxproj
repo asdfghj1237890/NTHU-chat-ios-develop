@@ -18,6 +18,7 @@
 		5F5A537E1ADE67D500F81DF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5A537D1ADE67D500F81DF0 /* AppDelegate.swift */; };
 		9DF8E83C00C3437A43880C23 /* Pods_NTHU_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A9DE5B756160322D232991 /* Pods_NTHU_Chat.framework */; };
 		B000BDCA203D7ECD004A7D0D /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B000BDC9203D7ECD004A7D0D /* ChannelViewController.swift */; };
+		B001B70D2163BE04002DB385 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B001B70C2163BE04002DB385 /* MapViewController.swift */; };
 		B012B4002031F4DD0042D301 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B012B3FF2031F4DD0042D301 /* Assets.xcassets */; };
 		B02B0CC2203033B700D87F70 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B02B0CC1203033B600D87F70 /* GoogleService-Info.plist */; };
 		B084885D203B565A00AB3213 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B084885C203B565A00AB3213 /* MenuViewController.swift */; };
@@ -43,8 +44,8 @@
 		5F5A53791ADE67D500F81DF0 /* NTHU Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NTHU Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F5A537D1ADE67D500F81DF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79A9DE5B756160322D232991 /* Pods_NTHU_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NTHU_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A9DDE8B39B968F7881E89E3D /* Pods-FriendlyChatSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendlyChatSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FriendlyChatSwift/Pods-FriendlyChatSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		B000BDC9203D7ECD004A7D0D /* ChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewController.swift; sourceTree = "<group>"; };
+		B001B70C2163BE04002DB385 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B012B3FF2031F4DD0042D301 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B02B0CC1203033B600D87F70 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B084885C203B565A00AB3213 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -54,10 +55,10 @@
 		B09A84C22043DEE2003CA708 /* MyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
 		B09A84C4204D3863003CA708 /* Item_ClientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item_ClientCell.swift; sourceTree = "<group>"; };
 		B09A84C6204D3DA1003CA708 /* Item_MyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item_MyCell.swift; sourceTree = "<group>"; };
+		B0B5126321639B6E00C1F3D5 /* NTHU Chat.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "NTHU Chat.xcodeproj"; sourceTree = "<group>"; };
 		B0B6BD7F203CE3C300099188 /* itemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itemViewController.swift; sourceTree = "<group>"; };
 		B0D6F4A82033023500C4B835 /* ClientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCell.swift; sourceTree = "<group>"; };
 		C6FFE4A27636BCAB62B3185F /* Pods-NTHU Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NTHU Chat.release.xcconfig"; path = "Pods/Target Support Files/Pods-NTHU Chat/Pods-NTHU Chat.release.xcconfig"; sourceTree = "<group>"; };
-		F33697876D898431F365464F /* Pods-FriendlyChatSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendlyChatSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-FriendlyChatSwift/Pods-FriendlyChatSwift.release.xcconfig"; sourceTree = "<group>"; };
 		FA4C14DC1BFB0DADB458A935 /* Pods-NTHU Chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NTHU Chat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NTHU Chat/Pods-NTHU Chat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,6 +124,7 @@
 				2C595F041B34B73A00355AE7 /* Constants.swift */,
 				B0B6BD7F203CE3C300099188 /* itemViewController.swift */,
 				B000BDC9203D7ECD004A7D0D /* ChannelViewController.swift */,
+				B001B70C2163BE04002DB385 /* MapViewController.swift */,
 				5F5A537B1ADE67D500F81DF0 /* Supporting Files */,
 				B012B3FF2031F4DD0042D301 /* Assets.xcassets */,
 				B0848881203BC92200AB3213 /* nthuchatswift.xcdatamodeld */,
@@ -147,6 +149,7 @@
 		AD1F1C80A93A096F652504F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B0B5126321639B6E00C1F3D5 /* NTHU Chat.xcodeproj */,
 				B0CCF4FF2034CC9000F42C70 /* Frameworks */,
 				79A9DE5B756160322D232991 /* Pods_NTHU_Chat.framework */,
 			);
@@ -156,12 +159,17 @@
 		AED2B9EE2800BB48980C87D7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A9DDE8B39B968F7881E89E3D /* Pods-FriendlyChatSwift.debug.xcconfig */,
-				F33697876D898431F365464F /* Pods-FriendlyChatSwift.release.xcconfig */,
 				FA4C14DC1BFB0DADB458A935 /* Pods-NTHU Chat.debug.xcconfig */,
 				C6FFE4A27636BCAB62B3185F /* Pods-NTHU Chat.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B0B5126421639B6E00C1F3D5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		B0CCF4FF2034CC9000F42C70 /* Frameworks */ = {
@@ -231,6 +239,12 @@
 			mainGroup = 5F5A53431ADE670C00F81DF0;
 			productRefGroup = 5F5A534D1ADE670C00F81DF0 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B0B5126421639B6E00C1F3D5 /* Products */;
+					ProjectRef = B0B5126321639B6E00C1F3D5 /* NTHU Chat.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				5F5A53781ADE67D500F81DF0 /* NTHU Chat */,
@@ -283,12 +297,16 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-NTHU Chat/Pods-NTHU Chat-resources.sh",
 				"${PODS_ROOT}/FirebaseInvites/Resources/GINInviteResources.bundle",
 				"${PODS_ROOT}/FirebaseInvites/Resources/GPPACLPickerResources.bundle",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GINInviteResources.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GPPACLPickerResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,6 +325,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -323,6 +342,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -358,6 +378,7 @@
 				2C595F061B34B73A00355AE7 /* Constants.swift in Sources */,
 				B09A84C7204D3DA1003CA708 /* Item_MyCell.swift in Sources */,
 				B0848883203BC92200AB3213 /* nthuchatswift.xcdatamodeld in Sources */,
+				B001B70D2163BE04002DB385 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,7 +521,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -523,7 +544,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

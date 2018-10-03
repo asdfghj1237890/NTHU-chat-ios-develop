@@ -2,7 +2,6 @@ import Photos
 import UIKit
 
 import Firebase
-import GoogleMobileAds
 import Crashlytics
 import SDWebImage
 import UITextView_Placeholder
@@ -21,7 +20,6 @@ class itemViewController: UIViewController , UITableViewDataSource, UITableViewD
     @IBOutlet weak var indicator_loader: UIActivityIndicatorView!
     @IBOutlet weak var itemTable: UITableView!
     var titleLabel: String!
-    @IBOutlet weak var banner: GADBannerView!
     @IBOutlet weak var heightconst: NSLayoutConstraint!
     
     var numberOfPosts: Int = 15
@@ -89,12 +87,11 @@ class itemViewController: UIViewController , UITableViewDataSource, UITableViewD
             }
         }
         
-        loadAd()
         configureDatabase()
         configureRemoteConfig()
         fetchConfig()
         
-        if (IQKeyboardManager.sharedManager().keyboardShowing){
+        if (IQKeyboardManager.shared.keyboardShowing){
             self.view.endEditing(true)
         }
     }
@@ -109,7 +106,7 @@ class itemViewController: UIViewController , UITableViewDataSource, UITableViewD
     
     func sideMenuWillAppear(menu: UISideMenuNavigationController, animated: Bool) {
         print("SideMenu Appearing! (animated: \(animated))")
-        IQKeyboardManager.sharedManager().enable = false
+        IQKeyboardManager.shared.enable = false
     }
     
     func sideMenuDidAppear(menu: UISideMenuNavigationController, animated: Bool) {
@@ -122,7 +119,7 @@ class itemViewController: UIViewController , UITableViewDataSource, UITableViewD
     
     func sideMenuDidDisappear(menu: UISideMenuNavigationController, animated: Bool) {
         print("SideMenu Disappeared! (animated: \(animated))")
-        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.shared.enable = true
         self.view.endEditing(true)
     }
     
@@ -134,12 +131,6 @@ class itemViewController: UIViewController , UITableViewDataSource, UITableViewD
     @IBAction func didSendMessage(_ sender: UIButton) {
         //_ = textFieldShouldReturn(textField)
         _ = send_event(itemTextView)
-    }
-    
-    func loadAd() {
-        self.banner.adUnitID = kBannerAdUnitID
-        self.banner.rootViewController = self
-        self.banner.load(GADRequest())
     }
     
     deinit {
@@ -199,7 +190,7 @@ class itemViewController: UIViewController , UITableViewDataSource, UITableViewD
     func configureRemoteConfig() {
         remoteConfig = RemoteConfig.remoteConfig()
         let remoteConfigSettings = RemoteConfigSettings(developerModeEnabled: true)
-        remoteConfig.configSettings = remoteConfigSettings!
+        remoteConfig.configSettings = remoteConfigSettings
     }
     
     func fetchConfig() {

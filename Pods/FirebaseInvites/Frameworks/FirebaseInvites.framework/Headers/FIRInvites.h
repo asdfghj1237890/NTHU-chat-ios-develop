@@ -13,8 +13,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "FIRInvitesSwiftNameSupport.h"
-
 @class FIRInvitesTargetApplication;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -27,10 +25,10 @@ typedef NS_ENUM(NSUInteger, FIRReceivedInviteMatchType) {
   /// The match between the deeplink and this device is exact, hence you could reveal any personal
   /// information related to the deep link.
   FIRReceivedInviteMatchTypeStrong
-} FIR_SWIFT_NAME(ReceivedInviteMatchType);
+} NS_SWIFT_NAME(ReceivedInviteMatchType);
 
 /// The class that represents a received invitation.
-FIR_SWIFT_NAME(ReceivedInvite)
+NS_SWIFT_NAME(ReceivedInvite)
 @interface FIRReceivedInvite : NSObject
 
 /// The invite ID that was passed to the app.
@@ -49,12 +47,12 @@ FIR_SWIFT_NAME(ReceivedInvite)
  */
 typedef void (^FIRInvitesUniversalLinkHandler)(FIRReceivedInvite * _Nullable receivedInvite,
                                                    NSError * _Nullable error)
-  FIR_SWIFT_NAME(InvitesUniversalLinkHandler);
+  NS_SWIFT_NAME(InvitesUniversalLinkHandler);
 
 @class GINInviteTargetApplication;
 
 /// The protocol to receive the result of the invite action.
-FIR_SWIFT_NAME(InviteDelegate)
+NS_SWIFT_NAME(InviteDelegate)
 @protocol FIRInviteDelegate <NSObject>
 
 @optional
@@ -68,7 +66,7 @@ FIR_SWIFT_NAME(InviteDelegate)
 @end
 
 /// The protocol to configure the invite dialog.
-FIR_SWIFT_NAME(InviteBuilder)
+NS_SWIFT_NAME(InviteBuilder)
 @protocol FIRInviteBuilder <NSObject>
 
 /// Sets the delegate object that will receive callbacks after the invite dialog closes.
@@ -116,7 +114,7 @@ FIR_SWIFT_NAME(InviteBuilder)
 @end
 
 /// The main entry point for the invite APIs.
-FIR_SWIFT_NAME(Invites)
+NS_SWIFT_NAME(Invites)
 @interface FIRInvites : NSObject
 
 /// App Invite requires defining the client ID if the invite is received on a different platform

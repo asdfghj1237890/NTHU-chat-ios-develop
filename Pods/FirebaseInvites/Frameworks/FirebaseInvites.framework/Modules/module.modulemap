@@ -8,6 +8,7 @@ framework module FirebaseInvites {
   link framework "CoreGraphics"
   link framework "CoreText"
   link framework "Foundation"
+  link framework "LocalAuthentication"
   link framework "MessageUI"
   link framework "QuartzCore"
   link framework "SafariServices"

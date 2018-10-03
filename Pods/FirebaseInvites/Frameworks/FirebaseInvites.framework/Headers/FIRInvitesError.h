@@ -13,11 +13,9 @@
 
 #import <Foundation/Foundation.h>
 
-#import "FIRInvitesSwiftNameSupport.h"
-
 /// Error domain for errors returned by the invite dialog.
 extern NSString *const kFIRInvitesErrorDomain
-    FIR_SWIFT_NAME(InvitesErrorDomain);
+    NS_SWIFT_NAME(InvitesErrorDomain);
 
 /// Possible error codes returned by the invite dialog.
 typedef NS_ENUM(NSInteger, FIRInvitesErrorCode) {
@@ -39,4 +37,4 @@ typedef NS_ENUM(NSInteger, FIRInvitesErrorCode) {
   FIRInvitesErrorCodeSMSError = -492,
   /// Invalid parameters error.
   FIRInvitesErrorCodeInvalidParameters = -497,
-} FIR_SWIFT_NAME(InvitesErrorCode);
+} NS_SWIFT_NAME(InvitesErrorCode);

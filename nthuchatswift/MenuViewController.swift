@@ -8,7 +8,7 @@ import CoreData
 
 class MenuViewController: UITableViewController{
     @IBOutlet weak var courseTable: UITableView!
-    var courses = [["abc","abc@abc.com"],["全校"],[]]
+    var courses = [["abc","abc@abc.com"],["探索"],["全校"],[]]
     var information_select:Bool = false
     
     override func viewDidLoad() {
@@ -30,16 +30,16 @@ class MenuViewController: UITableViewController{
             if(users?.first != nil){
                 let mainUser:UserInfo = users!.first as! UserInfo
                 
-                if(mainUser.divName != nil && self.courses[1].count == 1){
+                if(mainUser.divName != nil && self.courses[2].count == 1){
                     print("course222: "+mainUser.divName!)
-                    self.courses[1].append(mainUser.divName!)
+                    self.courses[2].append(mainUser.divName!)
                     
                 }
-                if (mainUser.classes != nil && self.courses[2].count == 0){
+                if (mainUser.classes != nil && self.courses[3].count == 0){
                     print("course111: "+mainUser.classes!)
                     let course:[String.SubSequence] = mainUser.classes!.split(separator: "@")
                     for title in course{
-                        self.courses[2].append(String(title))
+                        self.courses[3].append(String(title))
                     }
                 }
             }
@@ -55,7 +55,7 @@ class MenuViewController: UITableViewController{
     
     override func viewWillDisappear(_ animated: Bool) {
         //IQKeyboardManager.sharedManager().enable = true
-        if (IQKeyboardManager.sharedManager().keyboardShowing){
+        if (IQKeyboardManager.shared.keyboardShowing){
             self.view.endEditing(true)
         }
         self.courses[0][0] = (Auth.auth().currentUser?.displayName)!
@@ -78,10 +78,17 @@ class MenuViewController: UITableViewController{
         if (indexPath.section == 0 && indexPath.row == 0){
             information_select = true
             showAlert(withTitle: "Change Name", message: "You can change your displayname !")
+        }else if(indexPath.section == 1){
+            information_select = false
+            performSegue(withIdentifier: "explore",
+                         sender: courses[1]
+                         )
         }else{
             //dismiss(animated: true, completion: nil)
             information_select = false
-            performSegue(withIdentifier: "course_item", sender: courses[(tableView.indexPathForSelectedRow?.section)!][(tableView.indexPathForSelectedRow?.row)!])
+            performSegue(withIdentifier: "course_item",
+                         sender: courses[(tableView.indexPathForSelectedRow?.section)!][(tableView.indexPathForSelectedRow?.row)!]
+                         )
             
         }
         
@@ -90,8 +97,11 @@ class MenuViewController: UITableViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let course_table = sender as? String{
             if (segue.identifier == "course_item") {
-                    let itemviewController: itemViewController = segue.destination as! itemViewController
-                    itemviewController.titleLabel = course_table
+                let itemviewController: itemViewController = segue.destination as! itemViewController
+                itemviewController.titleLabel = course_table
+            }else if(segue.identifier == "explore"){
+                let itemviewController1: MapViewController = segue.destination as! MapViewController
+                itemviewController1.titleLabel = course_table
             }
         }
     }
@@ -101,8 +111,10 @@ class MenuViewController: UITableViewController{
         if (section == 0){
             title = "資料"
         }else if (section == 1){
-            title = "大型頻道"
+            title = "地圖"
         }else if (section == 2){
+            title = "大型頻道"
+        }else if (section == 3){
             title = "課程頻道"
         }
         return title
@@ -125,6 +137,8 @@ class MenuViewController: UITableViewController{
                 cell.iconImage.image = UIImage(named: "icons8-gender_neutral_user")
             }
         }else if(indexPath.section == 1){
+            cell.iconImage.image = UIImage(named: "icons8-marker")
+        }else if(indexPath.section == 2){
             cell.iconImage.image = UIImage(named: "icons8-school")
         }else{
             cell.iconImage.image = UIImage(named: "icons8-purchase_order")
