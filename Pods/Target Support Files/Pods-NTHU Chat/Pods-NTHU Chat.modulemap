@@ -1,6 +1,0 @@
-framework module Pods_NTHU_Chat {
-  umbrella header "Pods-NTHU Chat-umbrella.h"
-
-  export *
-  module * { export * }
-}
