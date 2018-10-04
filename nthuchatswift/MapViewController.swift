@@ -3,9 +3,11 @@ import Firebase
 import SideMenu
 import CoreData
 import GoogleMaps
+import CoreLocation
 
-class MapViewController: UIViewController, GMSMapViewDelegate,UINavigationControllerDelegate, UITextViewDelegate, UISideMenuNavigationControllerDelegate{
+class MapViewController: UIViewController, GMSMapViewDelegate,UINavigationControllerDelegate, UITextViewDelegate, UISideMenuNavigationControllerDelegate,CLLocationManagerDelegate{
     @IBOutlet weak var mapView: GMSMapView!
+    var locationManager = CLLocationManager()
     var titleLabel: String!
     
     override func viewDidLoad() {
@@ -15,7 +17,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate,UINavigationContro
         self.navigationItem.leftBarButtonItem?.title = ""
         self.navigationItem.title = "探索"
         
-        let camera = GMSCameraPosition.camera(withLatitude: 24.7947253,longitude: 120.9910429, zoom: 17.0)
+        let camera = GMSCameraPosition.camera(withLatitude: 24.7942042,longitude: 120.9923411, zoom: 16.0)
         mapView.camera = camera
         //mapView.mapType = .terrain
         
@@ -27,7 +29,11 @@ class MapViewController: UIViewController, GMSMapViewDelegate,UINavigationContro
         marker.icon = GMSMarker.markerImage(with: .blue)
         
         mapView.delegate = self
+        mapView.settings.compassButton = true
+        mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
+        //Location Manager code to fetch current location
+        self.locationManager.startUpdatingLocation()
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,6 +42,20 @@ class MapViewController: UIViewController, GMSMapViewDelegate,UINavigationContro
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker){
         print("show me view")
+    }
+    
+    //Location Manager delegates
+    private func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let location = locations.last
+        
+        let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 17.0)
+        
+        self.mapView?.animate(to: camera)
+        
+        //Finally stop updating location otherwise it will come again and again in this delegate
+        self.locationManager.stopUpdatingLocation()
+        
     }
     
     @IBAction func signOutScreen() {
