@@ -241,16 +241,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0HC-fe-1qG" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lAT-Vb-uKZ">
+                                <rect key="frame" x="0.0" y="729" width="375" height="83"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem title="啟發" image="icons8-light_on" id="sc3-ew-tcO"/>
+                                    <tabBarItem title="學習" image="icons8-books" id="qV1-fK-9Tb"/>
+                                    <tabBarItem title="娛樂" image="icons8-carousel" id="rVL-RH-UeT"/>
+                                    <tabBarItem title="社交" image="icons8-bar" id="zBh-xL-RFG"/>
+                                    <tabBarItem title="朋友" image="icons8-user_group_man_man" id="Ktt-Zm-G7e"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="m1Z-je-AOD" firstAttribute="bottom" secondItem="0HC-fe-1qG" secondAttribute="bottom" id="Axv-IT-Ycm"/>
+                            <constraint firstItem="lAT-Vb-uKZ" firstAttribute="centerX" secondItem="b59-kM-5WA" secondAttribute="centerX" id="5UY-ZZ-Tw9"/>
                             <constraint firstItem="m1Z-je-AOD" firstAttribute="trailing" secondItem="0HC-fe-1qG" secondAttribute="trailing" id="Cei-gD-4Do"/>
+                            <constraint firstItem="lAT-Vb-uKZ" firstAttribute="top" secondItem="0HC-fe-1qG" secondAttribute="bottom" id="Epf-5Q-bcu"/>
                             <constraint firstItem="0HC-fe-1qG" firstAttribute="leading" secondItem="m1Z-je-AOD" secondAttribute="leading" id="SA9-4g-1MI"/>
-                            <constraint firstItem="0HC-fe-1qG" firstAttribute="top" secondItem="m1Z-je-AOD" secondAttribute="top" id="thd-Wi-lBt"/>
+                            <constraint firstAttribute="bottom" secondItem="lAT-Vb-uKZ" secondAttribute="bottom" id="Ye4-qa-wi1"/>
+                            <constraint firstItem="lAT-Vb-uKZ" firstAttribute="leading" secondItem="m1Z-je-AOD" secondAttribute="leading" id="eDR-Rk-xhB"/>
+                            <constraint firstItem="0HC-fe-1qG" firstAttribute="top" secondItem="m1Z-je-AOD" secondAttribute="top" id="o1a-Jc-pl1"/>
+                            <constraint firstItem="lAT-Vb-uKZ" firstAttribute="trailing" secondItem="m1Z-je-AOD" secondAttribute="trailing" id="tlC-9m-AlC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="m1Z-je-AOD"/>
                     </view>
@@ -274,7 +289,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wie-Gp-n1g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2507" y="84"/>
+            <point key="canvasLocation" x="2506.4000000000001" y="83.497536945812811"/>
         </scene>
         <!--Item View Controller-->
         <scene sceneID="dnL-qe-aY1">
@@ -729,12 +744,17 @@
     </scenes>
     <resources>
         <image name="background" width="640" height="1136"/>
+        <image name="icons8-bar" width="60" height="60"/>
+        <image name="icons8-books" width="60" height="60"/>
+        <image name="icons8-carousel" width="60" height="60"/>
+        <image name="icons8-light_on" width="60" height="60"/>
         <image name="icons8-logout_rounded_up" width="60" height="60"/>
         <image name="icons8-menu" width="60" height="60"/>
         <image name="icons8-paper_plane" width="96" height="96"/>
+        <image name="icons8-user_group_man_man" width="60" height="60"/>
         <image name="nthulogo" width="1440" height="1440"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="o4R-Rx-8dv"/>
+        <segue reference="qW2-Ff-UyH"/>
     </inferredMetricsTieBreakers>
 </document>
