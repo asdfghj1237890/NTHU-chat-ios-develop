@@ -22,7 +22,6 @@ class itemViewController: UIViewController , UITableViewDataSource, UITableViewD
     var titleLabel: String!
     @IBOutlet weak var heightconst: NSLayoutConstraint!
     
-    var numberOfPosts: Int = 10
     var handle: AuthStateDidChangeListenerHandle?
     var ref: DatabaseReference!
     var messages: [DataSnapshot]! = []
@@ -215,7 +214,7 @@ class itemViewController: UIViewController , UITableViewDataSource, UITableViewD
         }else if (dragdirection == 0 && startKey != nil){
             //going up
             print("firebasetest1_startkey: ",self.startKey)
-            _refHandle = self.ref.child(channel_title).queryOrderedByKey().queryEnding(atValue: self.startKey).queryLimited(toLast: numberOfPosts).observe(.value){(snapshot) in
+            _refHandle = self.ref.child(channel_title).queryOrderedByKey().queryEnding(atValue: self.startKey).queryLimited(toLast: 10).observe(.value){(snapshot) in
                 guard let children = snapshot.children.allObjects.first as? DataSnapshot else{return}
                 if (snapshot.childrenCount > 0 ){
                     print("firebasetest1_childrencount: ",snapshot.childrenCount)
