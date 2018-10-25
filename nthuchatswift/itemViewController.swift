@@ -218,6 +218,7 @@ class itemViewController: UIViewController , UITableViewDataSource, UITableViewD
                 guard let children = snapshot.children.allObjects.first as? DataSnapshot else{return}
                 if (snapshot.childrenCount > 0 ){
                     print("firebasetest1_childrencount: ",snapshot.childrenCount)
+                    UIView.setAnimationsEnabled(false)
                     //self.itemTable.beginUpdates()
                     for child in snapshot.children.reversed(){
                         if ((child as AnyObject).key != self.startKey &&
@@ -227,13 +228,16 @@ class itemViewController: UIViewController , UITableViewDataSource, UITableViewD
                             self.itemTable.insertRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
                         }
                     }
+                    UIView.setAnimationsEnabled(true)
                     //self.itemTable.endUpdates()
                     //self.itemTable.reloadData()
                     self.startKey = children.key
                     print("firebasetest1_startkey_again: ",self.startKey)
                     print("firebasetest1_messagecount: ",self.messages.count)
-                    /*if (self.messages.count > 20){
-                        self.itemTable.scrollToRow(at: IndexPath(row: 10, section: 0), at: .bottom, animated: true)
+                    /*if (self.messages.count > 20 && snapshot.childrenCount != 1){
+                        self.itemTable.scrollToRow(at: IndexPath(row: 19, section: 0), at: .bottom, animated: true)
+                    }else if(snapshot.childrenCount == 1){
+                        self.itemTable.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
                     }else{
                         self.itemTable.scrollToRow(at: IndexPath(row: self.messages.count-1, section: 0), at: .bottom, animated: true)
                     }*/
@@ -248,16 +252,16 @@ class itemViewController: UIViewController , UITableViewDataSource, UITableViewD
         let frameheight = scrollView.frame.size.height
         let contentheight = scrollView.contentSize.height
         
-        /*print("firebasetest currentoffset: ", currentOffset)
+        print("firebasetest currentoffset: ", currentOffset)
         print("firebasetest frameheight: ", frameheight)
-        print("firebasetest contentheight: ", contentheight)*/
+        print("firebasetest contentheight: ", contentheight)
         
         if ((currentOffset + frameheight) >= contentheight) {
             print("firebasetest: going down!!!!")
             dragdirection = 1
             self.configureDatabase()
             
-        }else if( currentOffset <= (contentheight * 30/100)){
+        }else if( currentOffset <= (contentheight * 9/100)){
             print("firebasetest: going up!!!!")
             dragdirection = 0
             self.configureDatabase()

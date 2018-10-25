@@ -23,6 +23,7 @@ class ChannelViewController: UIViewController, UITableViewDataSource, UITableVie
     var handle: AuthStateDidChangeListenerHandle?
     var ref: DatabaseReference!
     var messages: [DataSnapshot]! = []
+    var messageKeys: [String]! = []
     var msglength: NSNumber = 10
     let textViewMaxHeight: CGFloat = 120
     let textViewMinHeight: CGFloat = 40
@@ -127,10 +128,13 @@ class ChannelViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
+    var startKey: String!
+    var dragdirection: Int!; // 0 is down, 1 is up
+    
     func configureDatabase() {
         ref = Database.database().reference()
         //Listen for new messages in the Firebase database
-        _refHandle = self.ref.child("messages").observe(.childAdded, with: {[weak self] (snapshot) -> Void in
+        /*_refHandle = self.ref.child("messages").observe(.childAdded, with: {[weak self] (snapshot) -> Void in
             guard let strongSelf = self else {return}
             strongSelf.messages.append(snapshot)
             let scroll_action :(Bool) -> Void = {_ in
@@ -148,7 +152,84 @@ class ChannelViewController: UIViewController, UITableViewDataSource, UITableVie
             }
 
             strongSelf.indicator_loader.stopAnimating()
-        })
+        })*/
+        if (startKey == nil){
+            print("firebasetest_startkey: ",self.startKey)
+            _refHandle = self.ref.child("messages").queryOrderedByKey().queryLimited(toLast: 30).observe(.value){(snapshot) in
+                guard let children = snapshot.children.allObjects.first as? DataSnapshot else{return}
+                if (snapshot.childrenCount > 0){
+                    print("firebasetest_snapshotcount: ",snapshot.childrenCount)
+                    for child in snapshot.children.allObjects as! [DataSnapshot]{
+                        if(!(self.messageKeys.contains((child as AnyObject).key))){
+                            self.messages.append(child)
+                            self.messageKeys.append(child.key)
+                            self.clientTable.insertRows(at: [IndexPath(row: self.messages.count-1, section: 0)], with: .automatic)
+                        }
+                    }
+                    self.startKey = children.key
+                    print("firebasetest_startkey_again: ",self.startKey)
+                    print("firebasetest_messagecount: ",self.messages.count)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                        self.clientTable.scrollToRow(at: IndexPath(row: self.messages.count-1, section: 0), at: .bottom, animated: true)
+                        self.indicator_loader.stopAnimating()
+                    }
+                }
+            }
+        }else if (dragdirection == 0 && startKey != nil){
+            //going up
+            print("firebasetest1_startkey: ",self.startKey)
+            _refHandle = self.ref.child("messages").queryOrderedByKey().queryEnding(atValue: self.startKey).queryLimited(toLast: 10).observe(.value){(snapshot) in
+                guard let children = snapshot.children.allObjects.first as? DataSnapshot else{return}
+                if (snapshot.childrenCount > 0 ){
+                    print("firebasetest1_childrencount: ",snapshot.childrenCount)
+                    UIView.setAnimationsEnabled(false)
+                    //self.itemTable.beginUpdates()
+                    for child in snapshot.children.reversed(){
+                        if ((child as AnyObject).key != self.startKey &&
+                            !(self.messageKeys.contains((child as AnyObject).key))){
+                            self.messages.insert(child as! DataSnapshot, at:0)
+                            self.messageKeys.append((child as AnyObject).key)
+                            self.clientTable.insertRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
+                        }
+                    }
+                    UIView.setAnimationsEnabled(true)
+                    //self.itemTable.endUpdates()
+                    //self.itemTable.reloadData()
+                    self.startKey = children.key
+                    print("firebasetest1_startkey_again: ",self.startKey)
+                    print("firebasetest1_messagecount: ",self.messages.count)
+                    /*if (self.messages.count > 20 && snapshot.childrenCount != 1){
+                     self.itemTable.scrollToRow(at: IndexPath(row: 19, section: 0), at: .bottom, animated: true)
+                     }else if(snapshot.childrenCount == 1){
+                     self.itemTable.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+                     }else{
+                     self.itemTable.scrollToRow(at: IndexPath(row: self.messages.count-1, section: 0), at: .bottom, animated: true)
+                     }*/
+                }
+            }
+        }
+    }
+    
+    //func scrollViewDidScroll(_ scrollView: UIScrollView){
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool){
+        let currentOffset = scrollView.contentOffset.y
+        let frameheight = scrollView.frame.size.height
+        let contentheight = scrollView.contentSize.height
+        
+        print("firebasetest currentoffset: ", currentOffset)
+        print("firebasetest frameheight: ", frameheight)
+        print("firebasetest contentheight: ", contentheight)
+        
+        if ((currentOffset + frameheight) >= contentheight) {
+            print("firebasetest: going down!!!!")
+            dragdirection = 1
+            self.configureDatabase()
+            
+        }else if( currentOffset <= (contentheight * 9/100)){
+            print("firebasetest: going up!!!!")
+            dragdirection = 0
+            self.configureDatabase()
+        }
     }
     
     /*@objc func handleHideKeyboard(){
