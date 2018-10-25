@@ -22,7 +22,7 @@ class itemViewController: UIViewController , UITableViewDataSource, UITableViewD
     var titleLabel: String!
     @IBOutlet weak var heightconst: NSLayoutConstraint!
     
-    var numberOfPosts: Int = 15
+    var numberOfPosts: Int = 10
     var handle: AuthStateDidChangeListenerHandle?
     var ref: DatabaseReference!
     var messages: [DataSnapshot]! = []
@@ -33,6 +33,7 @@ class itemViewController: UIViewController , UITableViewDataSource, UITableViewD
     var fetchingNow = false
     var remoteConfig: RemoteConfig!
     var channel_title = ""
+    var messageKeys: [String]! = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -143,11 +144,13 @@ class itemViewController: UIViewController , UITableViewDataSource, UITableViewD
         }
     }
     
+    var startKey: String!
+    var dragdirection: Int!; // 0 is down, 1 is up
     func configureDatabase() {
         ref = Database.database().reference()
         //original version
         //Listen for new messages in the Firebase database
-        _refHandle = self.ref.child(channel_title).observe(.childAdded, with: {[weak self] (snapshot) -> Void in
+        /*_refHandle = self.ref.child(channel_title).observe(.childAdded, with: {[weak self] (snapshot) -> Void in
             guard let strongSelf = self else {return}
             strongSelf.messages.append(snapshot)
             let scroll_action :(Bool) -> Void = {_ in
@@ -164,27 +167,102 @@ class itemViewController: UIViewController , UITableViewDataSource, UITableViewD
                 strongSelf.itemTable.scrollToRow(at: IndexPath(row: strongSelf.messages.count-1, section: 0), at: .bottom, animated: true)
             }
             strongSelf.indicator_loader.stopAnimating()
-        })
-        //new edit version
-        /*_refHandle = self.ref.child(channel_title).queryOrderedByValue().queryLimited(toLast: UInt(numberOfPosts)).observe(.childAdded, with: {[weak self] (snapshot) -> Void in
-            guard let strongSelf = self else {return}
-            strongSelf.messages.append(snapshot)
-            let scroll_action :(Bool) -> Void = {_ in
-                strongSelf.itemTable.scrollToRow(at: IndexPath(row: strongSelf.messages.count-1, section: 0), at: .bottom, animated: true)
-            }
-            if #available(iOS 11.0, *) {
-                strongSelf.itemTable.performBatchUpdates({
-                    strongSelf.itemTable.insertRows(at: [IndexPath(row: strongSelf.messages.count-1, section: 0)], with: .automatic)
-                }, completion: scroll_action)
-            } else {
-                strongSelf.itemTable.beginUpdates()
-                strongSelf.itemTable.insertRows(at: [IndexPath(row: strongSelf.messages.count-1, section: 0)], with: .automatic)
-                strongSelf.itemTable.endUpdates()
-                strongSelf.itemTable.scrollToRow(at: IndexPath(row: strongSelf.messages.count-1, section: 0), at: .bottom, animated: true)
-            }
-            strongSelf.indicator_loader.stopAnimating()
-            //strongSelf.fetchingNow = false
         })*/
+        //new edit version
+        
+        /*_refHandle = self.ref.child(channel_title).observe(.childAdded, with: {[weak self] (snapshot) -> Void in
+            guard let strongSelf = self else {return}
+            strongSelf.messages.append(snapshot)
+            /*let scroll_action :(Bool) -> Void = {_ in
+                strongSelf.itemTable.scrollToRow(at: IndexPath(row: strongSelf.messages.count-1, section: 0), at: .bottom, animated: true)
+            }
+            if #available(iOS 11.0, *) {
+                strongSelf.itemTable.performBatchUpdates({
+                    strongSelf.itemTable.insertRows(at: [IndexPath(row: strongSelf.messages.count-1, section: 0)], with: .automatic)
+                }, completion: scroll_action)
+            } else {
+                strongSelf.itemTable.beginUpdates()
+                strongSelf.itemTable.insertRows(at: [IndexPath(row: strongSelf.messages.count-1, section: 0)], with: .automatic)
+                strongSelf.itemTable.endUpdates()
+                strongSelf.itemTable.scrollToRow(at: IndexPath(row: strongSelf.messages.count-1, section: 0), at: .bottom, animated: true)
+            }
+            strongSelf.indicator_loader.stopAnimating()*/
+            strongSelf.itemTable.insertRows(at: [IndexPath(row: strongSelf.messages.count-1, section: 0)], with: .automatic)
+            strongSelf.indicator_loader.stopAnimating()
+        })*/
+        if (startKey == nil){
+            print("firebasetest_startkey: ",self.startKey)
+            _refHandle = self.ref.child(channel_title).queryOrderedByKey().queryLimited(toLast: 30).observe(.value){(snapshot) in
+                guard let children = snapshot.children.allObjects.first as? DataSnapshot else{return}
+                if (snapshot.childrenCount > 0){
+                    print("firebasetest_snapshotcount: ",snapshot.childrenCount)
+                    for child in snapshot.children.allObjects as! [DataSnapshot]{
+                        if(!(self.messageKeys.contains((child as AnyObject).key))){
+                            self.messages.append(child)
+                            self.messageKeys.append(child.key)
+                            self.itemTable.insertRows(at: [IndexPath(row: self.messages.count-1, section: 0)], with: .automatic)
+                        }
+                    }
+                    self.startKey = children.key
+                    print("firebasetest_startkey_again: ",self.startKey)
+                    print("firebasetest_messagecount: ",self.messages.count)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                        self.itemTable.scrollToRow(at: IndexPath(row: self.messages.count-1, section: 0), at: .bottom, animated: true)
+                        self.indicator_loader.stopAnimating()
+                    }
+                }
+            }
+        }else if (dragdirection == 0 && startKey != nil){
+            //going up
+            print("firebasetest1_startkey: ",self.startKey)
+            _refHandle = self.ref.child(channel_title).queryOrderedByKey().queryEnding(atValue: self.startKey).queryLimited(toLast: numberOfPosts).observe(.value){(snapshot) in
+                guard let children = snapshot.children.allObjects.first as? DataSnapshot else{return}
+                if (snapshot.childrenCount > 0 ){
+                    print("firebasetest1_childrencount: ",snapshot.childrenCount)
+                    //self.itemTable.beginUpdates()
+                    for child in snapshot.children.reversed(){
+                        if ((child as AnyObject).key != self.startKey &&
+                            !(self.messageKeys.contains((child as AnyObject).key))){
+                            self.messages.insert(child as! DataSnapshot, at:0)
+                            self.messageKeys.append((child as AnyObject).key)
+                            self.itemTable.insertRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
+                        }
+                    }
+                    //self.itemTable.endUpdates()
+                    //self.itemTable.reloadData()
+                    self.startKey = children.key
+                    print("firebasetest1_startkey_again: ",self.startKey)
+                    print("firebasetest1_messagecount: ",self.messages.count)
+                    /*if (self.messages.count > 20){
+                        self.itemTable.scrollToRow(at: IndexPath(row: 10, section: 0), at: .bottom, animated: true)
+                    }else{
+                        self.itemTable.scrollToRow(at: IndexPath(row: self.messages.count-1, section: 0), at: .bottom, animated: true)
+                    }*/
+                }
+            }
+        }
+        
+    }
+    //func scrollViewDidScroll(_ scrollView: UIScrollView){
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool){
+        let currentOffset = scrollView.contentOffset.y
+        let frameheight = scrollView.frame.size.height
+        let contentheight = scrollView.contentSize.height
+        
+        /*print("firebasetest currentoffset: ", currentOffset)
+        print("firebasetest frameheight: ", frameheight)
+        print("firebasetest contentheight: ", contentheight)*/
+        
+        if ((currentOffset + frameheight) >= contentheight) {
+            print("firebasetest: going down!!!!")
+            dragdirection = 1
+            self.configureDatabase()
+            
+        }else if( currentOffset <= (contentheight * 30/100)){
+            print("firebasetest: going up!!!!")
+            dragdirection = 0
+            self.configureDatabase()
+        }
     }
     
     func configureRemoteConfig() {
@@ -218,13 +296,6 @@ class itemViewController: UIViewController , UITableViewDataSource, UITableViewD
                 }
             }
         }
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView){
-        guard scrollView.contentOffset.y <= 0 else { return }
-        print("scrolling top")
-        numberOfPosts += 15
-        //configureDatabase()
     }
     
     // UITableViewDataSource protocol methods
