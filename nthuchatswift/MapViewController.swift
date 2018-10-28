@@ -4,9 +4,12 @@ import SideMenu
 import CoreData
 import GoogleMaps
 import CoreLocation
+import Floaty
 
 class MapViewController: UIViewController, GMSMapViewDelegate,UINavigationControllerDelegate, UITextViewDelegate, UISideMenuNavigationControllerDelegate,CLLocationManagerDelegate{
     @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var floaty: Floaty!
+    
     var locationManager = CLLocationManager()
     var titleLabel: String!
     
@@ -16,6 +19,41 @@ class MapViewController: UIViewController, GMSMapViewDelegate,UINavigationContro
         //print("title: ",self.titleLabel)
         self.navigationItem.leftBarButtonItem?.title = ""
         self.navigationItem.title = "探索"
+        
+        Floaty.global.rtlMode = false
+        floaty.buttonColor = UIColor(red: 123/255, green: 171/255, blue: 247/255, alpha: 1.0)
+        floaty.addItem("新增「朋友」", icon: UIImage(named: "icons8-user_group_man_man")!, handler: { item in
+            self.performSegue(withIdentifier: "activityadder",
+                         sender: "新增朋友"
+            )
+            self.floaty.close()
+        })
+        floaty.addItem("新增「社交」活動", icon: UIImage(named: "icons8-bar")!, handler: { item in
+            self.performSegue(withIdentifier: "activityadder",
+                              sender: "新增社交活動"
+            )
+            self.floaty.close()
+        })
+        floaty.addItem("新增「娛樂」活動", icon: UIImage(named: "icons8-carousel")!, handler: { item in
+            self.performSegue(withIdentifier: "activityadder",
+                              sender: "新增娛樂活動"
+            )
+            self.floaty.close()
+        })
+        floaty.addItem("新增「學習」活動", icon: UIImage(named: "icons8-books")!, handler: { item in
+            self.performSegue(withIdentifier: "activityadder",
+                              sender: "新增學習活動"
+            )
+            self.floaty.close()
+        })
+        floaty.addItem("新增「啟發」活動", icon: UIImage(named: "icons8-light_on")!, handler: { item in
+            self.performSegue(withIdentifier: "activityadder",
+                              sender: "新增啟發活動"
+            )
+            self.floaty.close()
+        })
+    
+        self.view.addSubview(floaty)
         
         let camera = GMSCameraPosition.camera(withLatitude: 24.7942042,longitude: 120.9923411, zoom: 16.0)
         mapView.camera = camera
@@ -34,6 +72,15 @@ class MapViewController: UIViewController, GMSMapViewDelegate,UINavigationContro
         mapView.settings.myLocationButton = true
         //Location Manager code to fetch current location
         self.locationManager.startUpdatingLocation()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //if let course_table = sender as? String{
+            if (segue.identifier == "activityadder") {
+                let activityadderController: activityadderController = segue.destination as! activityadderController
+                activityadderController.titleLabel = sender as! String
+            }
+        //}
     }
     
     override func didReceiveMemoryWarning() {

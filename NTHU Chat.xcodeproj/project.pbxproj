@@ -24,6 +24,7 @@
 		B084885D203B565A00AB3213 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B084885C203B565A00AB3213 /* MenuViewController.swift */; };
 		B084885F203B5DBC00AB3213 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B084885E203B5DBC00AB3213 /* MenuCell.swift */; };
 		B0848883203BC92200AB3213 /* nthuchatswift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B0848881203BC92200AB3213 /* nthuchatswift.xcdatamodeld */; };
+		B08AF1C021864A6200895152 /* activityadderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08AF1BF21864A6200895152 /* activityadderController.swift */; };
 		B09A84C32043DEE2003CA708 /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A84C22043DEE2003CA708 /* MyCell.swift */; };
 		B09A84C5204D3863003CA708 /* Item_ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A84C4204D3863003CA708 /* Item_ClientCell.swift */; };
 		B09A84C7204D3DA1003CA708 /* Item_MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A84C6204D3DA1003CA708 /* Item_MyCell.swift */; };
@@ -52,6 +53,7 @@
 		B084885E203B5DBC00AB3213 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		B0848882203BC92200AB3213 /* nthuchatswift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = nthuchatswift.xcdatamodel; sourceTree = "<group>"; };
 		B084888C203C990800AB3213 /* NTHU Chat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "NTHU Chat.entitlements"; sourceTree = "<group>"; };
+		B08AF1BF21864A6200895152 /* activityadderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = activityadderController.swift; sourceTree = "<group>"; };
 		B09A84C22043DEE2003CA708 /* MyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
 		B09A84C4204D3863003CA708 /* Item_ClientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item_ClientCell.swift; sourceTree = "<group>"; };
 		B09A84C6204D3DA1003CA708 /* Item_MyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item_MyCell.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				B0B6BD7F203CE3C300099188 /* itemViewController.swift */,
 				B000BDC9203D7ECD004A7D0D /* ChannelViewController.swift */,
 				B001B70C2163BE04002DB385 /* MapViewController.swift */,
+				B08AF1BF21864A6200895152 /* activityadderController.swift */,
 				5F5A537B1ADE67D500F81DF0 /* Supporting Files */,
 				B012B3FF2031F4DD0042D301 /* Assets.xcassets */,
 				B0848881203BC92200AB3213 /* nthuchatswift.xcdatamodeld */,
@@ -321,6 +324,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NTHU Chat/Pods-NTHU Chat-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Floaty/Floaty.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
@@ -338,6 +342,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Floaty.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
@@ -370,6 +375,7 @@
 				B0B6BD80203CE3C300099188 /* itemViewController.swift in Sources */,
 				B0D6F4A92033023500C4B835 /* ClientCell.swift in Sources */,
 				B084885D203B565A00AB3213 /* MenuViewController.swift in Sources */,
+				B08AF1C021864A6200895152 /* activityadderController.swift in Sources */,
 				5F5A537E1ADE67D500F81DF0 /* AppDelegate.swift in Sources */,
 				B09A84C32043DEE2003CA708 /* MyCell.swift in Sources */,
 				2CA807BC1B21702E009AD7F2 /* MeasurementHelper.swift in Sources */,

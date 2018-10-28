@@ -7,6 +7,7 @@ import UITextView_Placeholder
 import CoreData
 import SwiftSoup
 import GoogleMaps
+import Floaty
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate{
@@ -50,6 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     IQKeyboardManager.shared.canAdjustAdditionalSafeAreaInsets = true
     IQKeyboardManager.shared.enableAutoToolbar = false
     Database.database().isPersistenceEnabled = true
+    Floaty.global.rtlMode = false
+    
     return true
   }
     

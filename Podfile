@@ -18,6 +18,7 @@ pod 'SideMenu'
 pod 'SwiftSoup'
 pod 'GoogleMaps'
 pod 'GooglePlaces'
+pod 'Floaty', '~> 4.1.0'
 
 target 'NTHU Chat' do
 end
