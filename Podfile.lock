@@ -1,6 +1,7 @@
 PODS:
   - Crashlytics (3.9.3):
     - Fabric (~> 1.7.2)
+  - Eureka (4.3.0)
   - Fabric (1.7.12)
   - Firebase/Auth (5.9.0):
     - Firebase/CoreOnly
@@ -171,9 +172,12 @@ PODS:
   - SwiftSoup (1.7.4)
   - TextFieldEffects (1.5.0)
   - UITextView+Placeholder (1.2.1)
+  - ViewRow (0.3.0):
+    - Eureka (>= 4.0.0)
 
 DEPENDENCIES:
   - Crashlytics (~> 3.9.3)
+  - Eureka (~> 4.3.0)
   - Fabric (~> 1.7.2)
   - Firebase/Auth
   - Firebase/Database
@@ -190,9 +194,20 @@ DEPENDENCIES:
   - SwiftSoup
   - TextFieldEffects
   - UITextView+Placeholder
+  - ViewRow (from `https://github.com/EurekaCommunity/ViewRow`)
+
+EXTERNAL SOURCES:
+  ViewRow:
+    :git: https://github.com/EurekaCommunity/ViewRow
+
+CHECKOUT OPTIONS:
+  ViewRow:
+    :commit: 9011b78bc588bbbe2fb9445b6f8e78aad3e02a01
+    :git: https://github.com/EurekaCommunity/ViewRow
 
 SPEC CHECKSUMS:
   Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
+  Eureka: 6d711cb30ca333b4bc893110285a722ae3840114
   Fabric: d7387db9a31aadff63b147a4b91d982c53afaa4f
   Firebase: 383fa29aca93e371cab776b48a5c66544d3c2003
   FirebaseABTesting: 1f50b8d50f5e3469eea54e7463a7b7fe221d1f5e
@@ -227,7 +242,8 @@ SPEC CHECKSUMS:
   SwiftSoup: 92f5b348c131aed8af04f4326db1579ab19fa08c
   TextFieldEffects: bf9e9cac7cb1a97d632fbcd0724bb6347dd86633
   UITextView+Placeholder: 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
+  ViewRow: e278428ff53da5eab18b191d3e19a16f3e299fc1
 
-PODFILE CHECKSUM: 76396aae6a079111db6fb58b61b2984b37aba0fd
+PODFILE CHECKSUM: 8d26938a6af1fb02e85d2823a7c3dd63e8824e1b
 
 COCOAPODS: 1.4.0

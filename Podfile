@@ -19,6 +19,8 @@ pod 'SwiftSoup'
 pod 'GoogleMaps'
 pod 'GooglePlaces'
 pod 'Floaty', '~> 4.1.0'
+pod 'Eureka', '~> 4.3.0'
+pod 'ViewRow', :git => 'https://github.com/EurekaCommunity/ViewRow'
 
 target 'NTHU Chat' do
 end

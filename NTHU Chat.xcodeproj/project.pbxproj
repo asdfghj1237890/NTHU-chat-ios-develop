@@ -18,13 +18,15 @@
 		5F5A537E1ADE67D500F81DF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5A537D1ADE67D500F81DF0 /* AppDelegate.swift */; };
 		9DF8E83C00C3437A43880C23 /* Pods_NTHU_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A9DE5B756160322D232991 /* Pods_NTHU_Chat.framework */; };
 		B000BDCA203D7ECD004A7D0D /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B000BDC9203D7ECD004A7D0D /* ChannelViewController.swift */; };
-		B001B70D2163BE04002DB385 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B001B70C2163BE04002DB385 /* MapViewController.swift */; };
 		B012B4002031F4DD0042D301 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B012B3FF2031F4DD0042D301 /* Assets.xcassets */; };
 		B02B0CC2203033B700D87F70 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B02B0CC1203033B600D87F70 /* GoogleService-Info.plist */; };
 		B084885D203B565A00AB3213 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B084885C203B565A00AB3213 /* MenuViewController.swift */; };
 		B084885F203B5DBC00AB3213 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B084885E203B5DBC00AB3213 /* MenuCell.swift */; };
 		B0848883203BC92200AB3213 /* nthuchatswift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B0848881203BC92200AB3213 /* nthuchatswift.xcdatamodeld */; };
 		B08AF1C021864A6200895152 /* activityadderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08AF1BF21864A6200895152 /* activityadderController.swift */; };
+		B08AF1C621892B8300895152 /* CustomCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08AF1C521892B8300895152 /* CustomCells.swift */; };
+		B08AF1C821892E3D00895152 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08AF1C721892E3D00895152 /* FloatLabelTextField.swift */; };
+		B08AF1CB21892F6200895152 /* MapSiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08AF1CA21892F6200895152 /* MapSiteViewController.swift */; };
 		B09A84C32043DEE2003CA708 /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A84C22043DEE2003CA708 /* MyCell.swift */; };
 		B09A84C5204D3863003CA708 /* Item_ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A84C4204D3863003CA708 /* Item_ClientCell.swift */; };
 		B09A84C7204D3DA1003CA708 /* Item_MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A84C6204D3DA1003CA708 /* Item_MyCell.swift */; };
@@ -46,7 +48,6 @@
 		5F5A537D1ADE67D500F81DF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79A9DE5B756160322D232991 /* Pods_NTHU_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NTHU_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B000BDC9203D7ECD004A7D0D /* ChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewController.swift; sourceTree = "<group>"; };
-		B001B70C2163BE04002DB385 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B012B3FF2031F4DD0042D301 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B02B0CC1203033B600D87F70 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B084885C203B565A00AB3213 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +55,9 @@
 		B0848882203BC92200AB3213 /* nthuchatswift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = nthuchatswift.xcdatamodel; sourceTree = "<group>"; };
 		B084888C203C990800AB3213 /* NTHU Chat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "NTHU Chat.entitlements"; sourceTree = "<group>"; };
 		B08AF1BF21864A6200895152 /* activityadderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = activityadderController.swift; sourceTree = "<group>"; };
+		B08AF1C521892B8300895152 /* CustomCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCells.swift; sourceTree = "<group>"; };
+		B08AF1C721892E3D00895152 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
+		B08AF1CA21892F6200895152 /* MapSiteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSiteViewController.swift; sourceTree = "<group>"; };
 		B09A84C22043DEE2003CA708 /* MyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
 		B09A84C4204D3863003CA708 /* Item_ClientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item_ClientCell.swift; sourceTree = "<group>"; };
 		B09A84C6204D3DA1003CA708 /* Item_MyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item_MyCell.swift; sourceTree = "<group>"; };
@@ -126,8 +130,10 @@
 				2C595F041B34B73A00355AE7 /* Constants.swift */,
 				B0B6BD7F203CE3C300099188 /* itemViewController.swift */,
 				B000BDC9203D7ECD004A7D0D /* ChannelViewController.swift */,
-				B001B70C2163BE04002DB385 /* MapViewController.swift */,
+				B08AF1CA21892F6200895152 /* MapSiteViewController.swift */,
 				B08AF1BF21864A6200895152 /* activityadderController.swift */,
+				B08AF1C521892B8300895152 /* CustomCells.swift */,
+				B08AF1C721892E3D00895152 /* FloatLabelTextField.swift */,
 				5F5A537B1ADE67D500F81DF0 /* Supporting Files */,
 				B012B3FF2031F4DD0042D301 /* Assets.xcassets */,
 				B0848881203BC92200AB3213 /* nthuchatswift.xcdatamodeld */,
@@ -324,6 +330,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NTHU Chat/Pods-NTHU Chat-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/Floaty/Floaty.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
@@ -337,11 +344,13 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
 				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
 				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
+				"${BUILT_PRODUCTS_DIR}/ViewRow/ViewRow.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Floaty.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
@@ -355,6 +364,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ViewRow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -371,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C8E6C2B1B16875B0073CE3D /* SignInViewController.swift in Sources */,
+				B08AF1C821892E3D00895152 /* FloatLabelTextField.swift in Sources */,
 				B09A84C5204D3863003CA708 /* Item_ClientCell.swift in Sources */,
 				B0B6BD80203CE3C300099188 /* itemViewController.swift in Sources */,
 				B0D6F4A92033023500C4B835 /* ClientCell.swift in Sources */,
@@ -380,11 +391,12 @@
 				B09A84C32043DEE2003CA708 /* MyCell.swift in Sources */,
 				2CA807BC1B21702E009AD7F2 /* MeasurementHelper.swift in Sources */,
 				B084885F203B5DBC00AB3213 /* MenuCell.swift in Sources */,
+				B08AF1C621892B8300895152 /* CustomCells.swift in Sources */,
 				B000BDCA203D7ECD004A7D0D /* ChannelViewController.swift in Sources */,
+				B08AF1CB21892F6200895152 /* MapSiteViewController.swift in Sources */,
 				2C595F061B34B73A00355AE7 /* Constants.swift in Sources */,
 				B09A84C7204D3DA1003CA708 /* Item_MyCell.swift in Sources */,
 				B0848883203BC92200AB3213 /* nthuchatswift.xcdatamodeld in Sources */,
-				B001B70D2163BE04002DB385 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

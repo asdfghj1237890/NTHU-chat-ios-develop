@@ -6,7 +6,7 @@ import GoogleMaps
 import CoreLocation
 import Floaty
 
-class MapViewController: UIViewController, GMSMapViewDelegate,UINavigationControllerDelegate, UITextViewDelegate, UISideMenuNavigationControllerDelegate,CLLocationManagerDelegate{
+class MapSiteViewController: UIViewController, GMSMapViewDelegate,UINavigationControllerDelegate, UITextViewDelegate, UISideMenuNavigationControllerDelegate,CLLocationManagerDelegate{
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var floaty: Floaty!
     

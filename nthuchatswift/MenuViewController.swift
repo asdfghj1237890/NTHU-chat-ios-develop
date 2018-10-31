@@ -100,7 +100,7 @@ class MenuViewController: UITableViewController{
                 let itemviewController: itemViewController = segue.destination as! itemViewController
                 itemviewController.titleLabel = course_table
             }else if(segue.identifier == "explore"){
-                let itemviewController1: MapViewController = segue.destination as! MapViewController
+                let itemviewController1: MapSiteViewController = segue.destination as! MapSiteViewController
                 itemviewController1.titleLabel = course_table
             }
         }
