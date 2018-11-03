@@ -27,6 +27,8 @@
 		B08AF1C621892B8300895152 /* CustomCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08AF1C521892B8300895152 /* CustomCells.swift */; };
 		B08AF1C821892E3D00895152 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08AF1C721892E3D00895152 /* FloatLabelTextField.swift */; };
 		B08AF1CB21892F6200895152 /* MapSiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08AF1CA21892F6200895152 /* MapSiteViewController.swift */; };
+		B08AF1D0218CC62500895152 /* QrcodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08AF1CF218CC62500895152 /* QrcodeController.swift */; };
+		B08AF1D2218D453900895152 /* QrcodeScannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08AF1D1218D453900895152 /* QrcodeScannerController.swift */; };
 		B09A84C32043DEE2003CA708 /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A84C22043DEE2003CA708 /* MyCell.swift */; };
 		B09A84C5204D3863003CA708 /* Item_ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A84C4204D3863003CA708 /* Item_ClientCell.swift */; };
 		B09A84C7204D3DA1003CA708 /* Item_MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A84C6204D3DA1003CA708 /* Item_MyCell.swift */; };
@@ -58,6 +60,8 @@
 		B08AF1C521892B8300895152 /* CustomCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCells.swift; sourceTree = "<group>"; };
 		B08AF1C721892E3D00895152 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
 		B08AF1CA21892F6200895152 /* MapSiteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSiteViewController.swift; sourceTree = "<group>"; };
+		B08AF1CF218CC62500895152 /* QrcodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrcodeController.swift; sourceTree = "<group>"; };
+		B08AF1D1218D453900895152 /* QrcodeScannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrcodeScannerController.swift; sourceTree = "<group>"; };
 		B09A84C22043DEE2003CA708 /* MyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
 		B09A84C4204D3863003CA708 /* Item_ClientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item_ClientCell.swift; sourceTree = "<group>"; };
 		B09A84C6204D3DA1003CA708 /* Item_MyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item_MyCell.swift; sourceTree = "<group>"; };
@@ -132,6 +136,8 @@
 				B000BDC9203D7ECD004A7D0D /* ChannelViewController.swift */,
 				B08AF1CA21892F6200895152 /* MapSiteViewController.swift */,
 				B08AF1BF21864A6200895152 /* activityadderController.swift */,
+				B08AF1CF218CC62500895152 /* QrcodeController.swift */,
+				B08AF1D1218D453900895152 /* QrcodeScannerController.swift */,
 				B08AF1C521892B8300895152 /* CustomCells.swift */,
 				B08AF1C721892E3D00895152 /* FloatLabelTextField.swift */,
 				5F5A537B1ADE67D500F81DF0 /* Supporting Files */,
@@ -389,6 +395,7 @@
 				B08AF1C021864A6200895152 /* activityadderController.swift in Sources */,
 				5F5A537E1ADE67D500F81DF0 /* AppDelegate.swift in Sources */,
 				B09A84C32043DEE2003CA708 /* MyCell.swift in Sources */,
+				B08AF1D0218CC62500895152 /* QrcodeController.swift in Sources */,
 				2CA807BC1B21702E009AD7F2 /* MeasurementHelper.swift in Sources */,
 				B084885F203B5DBC00AB3213 /* MenuCell.swift in Sources */,
 				B08AF1C621892B8300895152 /* CustomCells.swift in Sources */,
@@ -396,6 +403,7 @@
 				B08AF1CB21892F6200895152 /* MapSiteViewController.swift in Sources */,
 				2C595F061B34B73A00355AE7 /* Constants.swift in Sources */,
 				B09A84C7204D3DA1003CA708 /* Item_MyCell.swift in Sources */,
+				B08AF1D2218D453900895152 /* QrcodeScannerController.swift in Sources */,
 				B0848883203BC92200AB3213 /* nthuchatswift.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

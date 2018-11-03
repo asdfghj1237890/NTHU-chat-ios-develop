@@ -241,7 +241,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0HC-fe-1qG" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="685"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B4E-UQ-MU2" customClass="Floaty" customModule="Floaty">
@@ -297,6 +297,7 @@
                         <outlet property="floaty" destination="B4E-UQ-MU2" id="6ge-aD-AgX"/>
                         <outlet property="mapView" destination="0HC-fe-1qG" id="xZM-od-Z7a"/>
                         <segue destination="cpg-kJ-lRB" kind="show" identifier="activityadder" id="E0R-U1-ZbP"/>
+                        <segue destination="6tg-zs-jeK" kind="show" identifier="qrcode" id="c56-DB-JLT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wie-Gp-n1g" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -313,11 +314,100 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="4Oh-Jd-90A"/>
                     </view>
-                    <navigationItem key="navigationItem" id="a2s-iJ-3j7"/>
+                    <navigationItem key="navigationItem" id="a2s-iJ-3j7">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="icons8-left_4" id="7I1-LI-8po">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="wXt-w0-5sx" kind="show" id="dTW-vn-cni"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXl-oM-k9c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3532" y="89"/>
+        </scene>
+        <!--QR Code-->
+        <scene sceneID="x1x-Wm-fdR">
+            <objects>
+                <viewController id="6tg-zs-jeK" customClass="QrcodeController" customModule="NTHU_Chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Z9q-WE-s1y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4q3-FL-Zin">
+                                <rect key="frame" x="37.666666666666657" y="256" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="4Ij-K9-3bV"/>
+                                    <constraint firstAttribute="width" constant="300" id="fFB-KO-cpe"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4q3-FL-Zin" firstAttribute="centerX" secondItem="Z9q-WE-s1y" secondAttribute="centerX" id="1y8-OZ-2Lx"/>
+                            <constraint firstItem="4q3-FL-Zin" firstAttribute="centerY" secondItem="Z9q-WE-s1y" secondAttribute="centerY" id="uZ7-Yh-eug"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bdc-1e-t3a"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="QR Code" id="Dak-lp-LvA">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="icons8-left_4" id="fGq-VZ-Oxu">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="wXt-w0-5sx" kind="show" id="mrg-X1-vvx"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="icons8-camera" id="LWT-9W-ShO">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="zax-fg-N8a" kind="show" id="bJD-7P-8VW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="qrcodeView" destination="4q3-FL-Zin" id="J8h-9W-zoz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U5k-LM-Snx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2506" y="913"/>
+        </scene>
+        <!--Scanner-->
+        <scene sceneID="Gbv-cJ-dE3">
+            <objects>
+                <viewController id="zax-fg-N8a" customClass="QrcodeScannerController" customModule="NTHU_Chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mVc-F9-RVK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No QR code detected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afQ-cy-eel">
+                                <rect key="frame" x="98.666666666666686" y="715" width="178" height="22"/>
+                                <fontDescription key="fontDescription" name="Kailasa-Bold" family="Kailasa" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="afQ-cy-eel" firstAttribute="centerX" secondItem="mVc-F9-RVK" secondAttribute="centerX" id="N7u-SG-BGa"/>
+                            <constraint firstItem="afQ-cy-eel" firstAttribute="centerY" secondItem="mVc-F9-RVK" secondAttribute="centerY" constant="320" id="dBU-Ju-Elp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Q9b-n5-NYx"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Scanner" id="lwZ-7o-4dm">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="icons8-left_4" id="Am2-QU-dh2">
+                            <connections>
+                                <segue destination="6tg-zs-jeK" kind="show" identifier="backtoQR" id="yKX-JV-tqw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="messageLabel" destination="afQ-cy-eel" id="UVf-Cz-2gw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UMu-UX-yw8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3574" y="913"/>
         </scene>
         <!--Item View Controller-->
         <scene sceneID="dnL-qe-aY1">
@@ -774,7 +864,9 @@
         <image name="background" width="640" height="1136"/>
         <image name="icons8-bar" width="60" height="60"/>
         <image name="icons8-books" width="60" height="60"/>
+        <image name="icons8-camera" width="60" height="60"/>
         <image name="icons8-carousel" width="60" height="60"/>
+        <image name="icons8-left_4" width="60" height="60"/>
         <image name="icons8-light_on" width="60" height="60"/>
         <image name="icons8-logout_rounded_up" width="60" height="60"/>
         <image name="icons8-menu" width="60" height="60"/>
@@ -784,5 +876,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="qW2-Ff-UyH"/>
+        <segue reference="yKX-JV-tqw"/>
+        <segue reference="mrg-X1-vvx"/>
     </inferredMetricsTieBreakers>
 </document>

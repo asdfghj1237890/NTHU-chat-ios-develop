@@ -112,13 +112,34 @@ class activityadderController: FormViewController, UINavigationControllerDelegat
         
     }
     
+    @IBAction func returnBack()  {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func showAlert() {
-        if (form.validate() == []){
+        if((((self.form.rowBy(tag: "starttime") as! DateTimeInlineRow).value)!) > (((self.form.rowBy(tag: "endtime") as! DateTimeInlineRow).value)!)){
+            let alertController = UIAlertController(title: "400 Wrong Time", message: "你不可以時光穿越", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(defaultAction)
+            present(alertController, animated: true)
+        }else if((((self.form.rowBy(tag: "starttime") as! DateTimeInlineRow).value)!) == (((self.form.rowBy(tag: "endtime") as! DateTimeInlineRow).value)!)){
+            let alertController = UIAlertController(title: "400 Wrong Time", message: "你不可以同時開始同時完成", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(defaultAction)
+            present(alertController, animated: true)
+        }
+        else if (form.validate() == []){
             let titlemessage = ((self.form.rowBy(tag: "title") as? TextRow)?.value)
             let df = DateFormatter()
             df.dateFormat = "yyyy-MM-dd hh:mm:ss"
             let start = df.string(from: ((self.form.rowBy(tag: "starttime") as? DateTimeInlineRow)?.value)!)
             let end = df.string(from: ((self.form.rowBy(tag: "endtime") as? DateTimeInlineRow)?.value)!)
+            if (start == end){
+                let alertController = UIAlertController(title: "400 Wrong Time", message: "你不可以同時開始同時完成", preferredStyle: .alert)
+                let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertController.addAction(defaultAction)
+                present(alertController, animated: true)
+            }
             let timemessage = "\n" + start + "\n" + end + "\n"
             let locationmessage = "\(((self.form.rowBy(tag: "location") as? LocationRow)?.value)!.coordinate.latitude)" + ","+"\(((self.form.rowBy(tag: "location") as? LocationRow)?.value)!.coordinate.longitude)" + "\n"
             let textareamessage = ((self.form.rowBy(tag: "description") as? TextAreaRow)?.value)

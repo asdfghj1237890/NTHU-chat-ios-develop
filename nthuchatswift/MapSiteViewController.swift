@@ -23,7 +23,7 @@ class MapSiteViewController: UIViewController, GMSMapViewDelegate,UINavigationCo
         Floaty.global.rtlMode = false
         floaty.buttonColor = UIColor(red: 123/255, green: 171/255, blue: 247/255, alpha: 1.0)
         floaty.addItem("新增「朋友」", icon: UIImage(named: "icons8-user_group_man_man")!, handler: { item in
-            self.performSegue(withIdentifier: "activityadder",
+            self.performSegue(withIdentifier: "qrcode",
                          sender: "新增朋友"
             )
             self.floaty.close()
