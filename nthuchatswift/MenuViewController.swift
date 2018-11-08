@@ -8,11 +8,12 @@ import CoreData
 
 class MenuViewController: UITableViewController{
     @IBOutlet weak var courseTable: UITableView!
-    var courses = [["abc","abc@abc.com"],["探索"],["全校"],[]]
+    var courses = [["abc","abc@abc.com"],["探索"],["朋友"],["全校"],[]]
     var information_select:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         courseTable.allowsMultipleSelection = false
         self.view.endEditing(true)
         self.courses[0][0] = (Auth.auth().currentUser?.displayName)!
@@ -30,16 +31,16 @@ class MenuViewController: UITableViewController{
             if(users?.first != nil){
                 let mainUser:UserInfo = users!.first as! UserInfo
                 
-                if(mainUser.divName != nil && self.courses[2].count == 1){
+                if(mainUser.divName != nil && self.courses[3].count == 1){
                     print("course222: "+mainUser.divName!)
-                    self.courses[2].append(mainUser.divName!)
+                    self.courses[3].append(mainUser.divName!)
                     
                 }
-                if (mainUser.classes != nil && self.courses[3].count == 0){
+                if (mainUser.classes != nil && self.courses[4].count == 0){
                     print("course111: "+mainUser.classes!)
                     let course:[String.SubSequence] = mainUser.classes!.split(separator: "@")
                     for title in course{
-                        self.courses[3].append(String(title))
+                        self.courses[4].append(String(title))
                     }
                 }
             }
@@ -83,6 +84,11 @@ class MenuViewController: UITableViewController{
             performSegue(withIdentifier: "explore",
                          sender: courses[1]
                          )
+        }else if(indexPath.section == 2){
+            information_select = false
+            performSegue(withIdentifier: "friends",
+                         sender: courses[2]
+            )
         }else{
             //dismiss(animated: true, completion: nil)
             information_select = false
@@ -102,6 +108,9 @@ class MenuViewController: UITableViewController{
             }else if(segue.identifier == "explore"){
                 let itemviewController1: MapSiteViewController = segue.destination as! MapSiteViewController
                 itemviewController1.titleLabel = course_table
+            }else if(segue.identifier == "friends"){
+                let itemviewController1: friendsViewController = segue.destination as! friendsViewController
+                itemviewController1.titleLabel = course_table
             }
         }
     }
@@ -113,8 +122,10 @@ class MenuViewController: UITableViewController{
         }else if (section == 1){
             title = "地圖"
         }else if (section == 2){
-            title = "大型頻道"
+            title = "朋友"
         }else if (section == 3){
+            title = "大型頻道"
+        }else if (section == 4){
             title = "課程頻道"
         }
         return title
@@ -139,6 +150,8 @@ class MenuViewController: UITableViewController{
         }else if(indexPath.section == 1){
             cell.iconImage.image = UIImage(named: "icons8-marker")
         }else if(indexPath.section == 2){
+            cell.iconImage.image = UIImage(named: "icons8-friends")
+        }else if(indexPath.section == 3){
             cell.iconImage.image = UIImage(named: "icons8-school")
         }else{
             cell.iconImage.image = UIImage(named: "icons8-purchase_order")

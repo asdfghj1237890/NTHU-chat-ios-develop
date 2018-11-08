@@ -226,6 +226,7 @@
                         <outlet property="courseTable" destination="19a-C5-We8" id="Ish-M8-hla"/>
                         <segue destination="omN-Jt-ZrA" kind="show" identifier="course_item" id="LLs-ll-Fc9"/>
                         <segue destination="wXt-w0-5sx" kind="show" identifier="explore" id="vwi-m8-Bc6"/>
+                        <segue destination="T4I-0R-MEt" kind="show" identifier="friends" id="Op2-Y6-wJW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fH3-yp-bgb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -408,6 +409,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UMu-UX-yw8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3574" y="913"/>
+        </scene>
+        <!--Friends View Controller-->
+        <scene sceneID="DMR-4x-DYa">
+            <objects>
+                <viewController id="T4I-0R-MEt" customClass="friendsViewController" customModule="NTHU_Chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dfJ-je-puy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pwh-gt-O44">
+                                <rect key="frame" x="0.0" y="88" width="375" height="724"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="cu8-1d-nO3">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cu8-1d-nO3" id="Wff-7a-Gll">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pwh-gt-O44" firstAttribute="top" secondItem="1yc-qJ-Hlt" secondAttribute="top" id="08Y-cZ-0tw"/>
+                            <constraint firstAttribute="bottom" secondItem="pwh-gt-O44" secondAttribute="bottom" id="FYD-1R-o7c"/>
+                            <constraint firstItem="pwh-gt-O44" firstAttribute="centerX" secondItem="dfJ-je-puy" secondAttribute="centerX" id="LiU-cT-eTW"/>
+                            <constraint firstItem="pwh-gt-O44" firstAttribute="trailing" secondItem="1yc-qJ-Hlt" secondAttribute="trailing" id="VD9-hC-TH4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1yc-qJ-Hlt"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="KMv-OX-M4Z">
+                        <barButtonItem key="leftBarButtonItem" image="icons8-menu" id="sqj-xA-QgO">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="pOL-D4-7ik" kind="presentation" id="ev1-SE-Ir2"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="icons8-logout_rounded_up" id="tGq-fb-TL4">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="signOutScreen" destination="T4I-0R-MEt" id="8Am-hR-0ge"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mYX-O6-E0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3685.5999999999999" y="-1371.4285714285716"/>
         </scene>
         <!--Item View Controller-->
         <scene sceneID="dnL-qe-aY1">
@@ -875,8 +927,8 @@
         <image name="nthulogo" width="1440" height="1440"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qW2-Ff-UyH"/>
+        <segue reference="ev1-SE-Ir2"/>
         <segue reference="yKX-JV-tqw"/>
-        <segue reference="mrg-X1-vvx"/>
+        <segue reference="dTW-vn-cni"/>
     </inferredMetricsTieBreakers>
 </document>

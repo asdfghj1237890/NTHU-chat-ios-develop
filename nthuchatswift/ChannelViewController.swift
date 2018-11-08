@@ -406,12 +406,16 @@ class ChannelViewController: UIViewController, UITableViewDataSource, UITableVie
             other_cell.messageLabel.text = text
             //cell.textLabel?.text = name + ": " + text
             other_cell.iconImageView?.image = UIImage(named: "ic_account_circle")
-            if let photoURL = message[Constants.MessageFields.photoURL], let URL = URL (string: photoURL)
+            if var photoURL = message[Constants.MessageFields.photoURL]
                 //, let data = try? Data(contentsOf: URL){
             {
+                if photoURL.contains(".."){
+                    photoURL = photoURL.replacingOccurrences(of: "..", with: "https://nthuchat.com", options: .literal, range: nil)
+                }
+                let pURL = URL (string: photoURL)
                 print(photoURL)
                 //cell.iconImageView.image = UIImage(data: data)
-                other_cell.iconImageView.sd_setImage(with: URL, placeholderImage: UIImage(named: "placeholder.png"))
+                other_cell.iconImageView.sd_setImage(with: pURL, placeholderImage: UIImage(named: "placeholder.png"))
             }
             other_cell.isUserInteractionEnabled = false
             return other_cell
@@ -420,12 +424,16 @@ class ChannelViewController: UIViewController, UITableViewDataSource, UITableVie
             my_cell.messageLabel.text = text
             //cell.textLabel?.text = name + ": " + text
             my_cell.iconImageView?.image = UIImage(named: "ic_account_circle")
-            if let photoURL = message[Constants.MessageFields.photoURL], let URL = URL (string: photoURL)
+            if var photoURL = message[Constants.MessageFields.photoURL]
                 //, let data = try? Data(contentsOf: URL){
             {
+                if photoURL.contains(".."){
+                    photoURL = photoURL.replacingOccurrences(of: "..", with: "https://nthuchat.com", options: .literal, range: nil)
+                }
+                let pURL = URL (string: photoURL)
                 print(photoURL)
                 //cell.iconImageView.image = UIImage(data: data)
-                my_cell.iconImageView.sd_setImage(with: URL, placeholderImage: UIImage(named: "placeholder.png"))
+                my_cell.iconImageView.sd_setImage(with: pURL, placeholderImage: UIImage(named: "placeholder.png"))
             }
             my_cell.isUserInteractionEnabled = false
             return my_cell

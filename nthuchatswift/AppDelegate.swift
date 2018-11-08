@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     }
     application.registerForRemoteNotifications()
     //IQKeyboardManager.shared.enable = true
-    IQKeyboardManager.shared.canAdjustAdditionalSafeAreaInsets = true
+    //IQKeyboardManager.shared.canAdjustAdditionalSafeAreaInsets = true
     IQKeyboardManager.shared.enableAutoToolbar = false
     Database.database().isPersistenceEnabled = true
     Floaty.global.rtlMode = false

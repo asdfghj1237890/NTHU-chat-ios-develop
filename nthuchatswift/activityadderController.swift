@@ -6,15 +6,17 @@ import Eureka
 import CoreLocation
 import ViewRow
 import GoogleMaps
+import SideMenu
 
 class activityadderController: FormViewController, UINavigationControllerDelegate,UITextViewDelegate{
     var titleLabel: String!
+    var activitysref: DatabaseReference!
     var initLocation = CLLocationCoordinate2D(latitude: 24.793167, longitude: 120.9925318)
+    private var sideMenuGestures : [UIGestureRecognizer] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = self.titleLabel
-        print("adder: ", self.titleLabel)
         
         form +++ Section("基本資料")
             <<< TextRow("title"){ row in
@@ -109,11 +111,37 @@ class activityadderController: FormViewController, UINavigationControllerDelegat
         animateScroll = true
         // Leaves 20pt of space between the keyboard and the highlighted row after scrolling to an off screen row
         rowKeyboardSpacing = 20
-        
     }
     
     @IBAction func returnBack()  {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func addactivity(alert: UIAlertAction){
+        activitysref = Database.database().reference().child("activity")
+        
+        var data:[String:String] = ["title":"text"]
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        data["title"] = ((self.form.rowBy(tag: "title") as? TextRow)?.value)
+        data["startdate"] = df.string(from: ((self.form.rowBy(tag: "starttime") as? DateTimeInlineRow)?.value)!)
+        data["enddate"] = df.string(from: ((self.form.rowBy(tag: "endtime") as? DateTimeInlineRow)?.value)!)
+        data["location"] = "\(((self.form.rowBy(tag: "location") as? LocationRow)?.value)!.coordinate.latitude)" + ","+"\(((self.form.rowBy(tag: "location") as? LocationRow)?.value)!.coordinate.longitude)"
+        data["description"] = ((self.form.rowBy(tag: "description") as? TextAreaRow)?.value)
+        data["creator"] = Auth.auth().currentUser?.uid
+        if titleLabel.contains("啟發"){
+            activitysref = activitysref.child("innovation")
+            activitysref.childByAutoId().setValue(data)
+        }else if titleLabel.contains("學習"){
+            activitysref = activitysref.child("learning")
+            activitysref.childByAutoId().setValue(data)
+        }else if titleLabel.contains("娛樂"){
+            activitysref = activitysref.child("amusement")
+            activitysref.childByAutoId().setValue(data)
+        }else if titleLabel.contains("社交"){
+            activitysref = activitysref.child("social")
+            activitysref.childByAutoId().setValue(data)
+        }
     }
     
     @IBAction func showAlert() {
@@ -145,7 +173,7 @@ class activityadderController: FormViewController, UINavigationControllerDelegat
             let textareamessage = ((self.form.rowBy(tag: "description") as? TextAreaRow)?.value)
             
             let alertController = UIAlertController(title: "準備提交以下資料:", message: titlemessage! + timemessage + locationmessage + textareamessage!, preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: addactivity)
             alertController.addAction(defaultAction)
             present(alertController, animated: true)
         }

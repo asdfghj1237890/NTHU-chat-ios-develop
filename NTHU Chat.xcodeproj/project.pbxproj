@@ -33,6 +33,7 @@
 		B09A84C5204D3863003CA708 /* Item_ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A84C4204D3863003CA708 /* Item_ClientCell.swift */; };
 		B09A84C7204D3DA1003CA708 /* Item_MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A84C6204D3DA1003CA708 /* Item_MyCell.swift */; };
 		B0B6BD80203CE3C300099188 /* itemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B6BD7F203CE3C300099188 /* itemViewController.swift */; };
+		B0B9E8A321945F3C006F5262 /* friendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B9E8A221945F3C006F5262 /* friendsViewController.swift */; };
 		B0D6F4A92033023500C4B835 /* ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D6F4A82033023500C4B835 /* ClientCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		B09A84C6204D3DA1003CA708 /* Item_MyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item_MyCell.swift; sourceTree = "<group>"; };
 		B0B5126321639B6E00C1F3D5 /* NTHU Chat.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "NTHU Chat.xcodeproj"; sourceTree = "<group>"; };
 		B0B6BD7F203CE3C300099188 /* itemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itemViewController.swift; sourceTree = "<group>"; };
+		B0B9E8A221945F3C006F5262 /* friendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = friendsViewController.swift; sourceTree = "<group>"; };
 		B0D6F4A82033023500C4B835 /* ClientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCell.swift; sourceTree = "<group>"; };
 		C6FFE4A27636BCAB62B3185F /* Pods-NTHU Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NTHU Chat.release.xcconfig"; path = "Pods/Target Support Files/Pods-NTHU Chat/Pods-NTHU Chat.release.xcconfig"; sourceTree = "<group>"; };
 		FA4C14DC1BFB0DADB458A935 /* Pods-NTHU Chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NTHU Chat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NTHU Chat/Pods-NTHU Chat.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			children = (
 				5F5A537D1ADE67D500F81DF0 /* AppDelegate.swift */,
 				B084885C203B565A00AB3213 /* MenuViewController.swift */,
+				B0B9E8A221945F3C006F5262 /* friendsViewController.swift */,
 				2CA807BB1B21702E009AD7F2 /* MeasurementHelper.swift */,
 				2C8E6C2A1B16875B0073CE3D /* SignInViewController.swift */,
 				2C595F041B34B73A00355AE7 /* Constants.swift */,
@@ -398,6 +401,7 @@
 				B08AF1D0218CC62500895152 /* QrcodeController.swift in Sources */,
 				2CA807BC1B21702E009AD7F2 /* MeasurementHelper.swift in Sources */,
 				B084885F203B5DBC00AB3213 /* MenuCell.swift in Sources */,
+				B0B9E8A321945F3C006F5262 /* friendsViewController.swift in Sources */,
 				B08AF1C621892B8300895152 /* CustomCells.swift in Sources */,
 				B000BDCA203D7ECD004A7D0D /* ChannelViewController.swift in Sources */,
 				B08AF1CB21892F6200895152 /* MapSiteViewController.swift in Sources */,

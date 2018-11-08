@@ -13,6 +13,8 @@ class MapSiteViewController: UIViewController, GMSMapViewDelegate,UINavigationCo
     var locationManager = CLLocationManager()
     var titleLabel: String!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.title = self.titleLabel
@@ -78,7 +80,7 @@ class MapSiteViewController: UIViewController, GMSMapViewDelegate,UINavigationCo
         //if let course_table = sender as? String{
             if (segue.identifier == "activityadder") {
                 let activityadderController: activityadderController = segue.destination as! activityadderController
-                activityadderController.titleLabel = sender as! String
+                activityadderController.titleLabel = sender as? String
             }
         //}
     }
@@ -86,6 +88,8 @@ class MapSiteViewController: UIViewController, GMSMapViewDelegate,UINavigationCo
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker){
         print("show me view")
