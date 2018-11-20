@@ -297,6 +297,7 @@
                     <connections>
                         <outlet property="floaty" destination="B4E-UQ-MU2" id="6ge-aD-AgX"/>
                         <outlet property="mapView" destination="0HC-fe-1qG" id="xZM-od-Z7a"/>
+                        <outlet property="tabbar" destination="lAT-Vb-uKZ" id="oD8-z7-OcB"/>
                         <segue destination="cpg-kJ-lRB" kind="show" identifier="activityadder" id="E0R-U1-ZbP"/>
                         <segue destination="6tg-zs-jeK" kind="show" identifier="qrcode" id="c56-DB-JLT"/>
                     </connections>
@@ -954,8 +955,9 @@
         <image name="nthulogo" width="1440" height="1440"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ev1-SE-Ir2"/>
-        <segue reference="yKX-JV-tqw"/>
+        <segue reference="E0R-U1-ZbP"/>
+        <segue reference="qW2-Ff-UyH"/>
+        <segue reference="c56-DB-JLT"/>
         <segue reference="dTW-vn-cni"/>
     </inferredMetricsTieBreakers>
 </document>
