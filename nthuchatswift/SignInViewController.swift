@@ -119,6 +119,7 @@ class SignInViewController: UIViewController{
                                         print(error as Any)
                                     }
                                     self.find_course(URLSession.shared, user: user_data)
+                                Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).setValue(["name":json.ret.name,"div":json.ret.divname])
                                     self.loader_indicator.stopAnimating()
                                 }else{
                                     print("signin1 User error create")
@@ -184,6 +185,7 @@ class SignInViewController: UIViewController{
             //print("home_responseString = \(String(describing: responseString))")
         }
         task2.resume()
+        self.performSegue(withIdentifier: Constants.Segues.SignInToChat, sender: nil)
     }
 }
 

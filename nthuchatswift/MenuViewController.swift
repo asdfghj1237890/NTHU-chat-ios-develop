@@ -16,7 +16,7 @@ class MenuViewController: UITableViewController{
         
         courseTable.allowsMultipleSelection = false
         self.view.endEditing(true)
-        self.courses[0][0] = (Auth.auth().currentUser?.displayName)!
+        //self.courses[0][0] = (Auth.auth().currentUser?.displayName)!
         
         if (Auth.auth().currentUser?.displayName != nil){
             self.courses[0][0] = (Auth.auth().currentUser?.displayName)!

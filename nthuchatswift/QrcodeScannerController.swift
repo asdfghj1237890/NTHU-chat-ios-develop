@@ -9,6 +9,7 @@ class QrcodeScannerController: UIViewController, AVCaptureMetadataOutputObjectsD
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     var qrCodeFrameView:UIView?
     var usersref: DatabaseReference!
+    //var name0, name1 : String!
     
     @IBOutlet weak var messageLabel: UILabel!
     
@@ -89,7 +90,23 @@ class QrcodeScannerController: UIViewController, AVCaptureMetadataOutputObjectsD
                 
                 usersref.observeSingleEvent(of: .value, with: { (snapshot) in
                     if snapshot.hasChild((Auth.auth().currentUser?.uid)!) && snapshot.hasChild(metadataObj.stringValue!.replacingOccurrences(of: ".", with: "").replacingOccurrences(of: "#", with: "").replacingOccurrences(of: "$", with: "").replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "")){
-                        var ref0,ref1 :DatabaseReference!
+                        var ref0, ref1 , refme, refhe :DatabaseReference!
+                        var name0, name1: String!
+                        
+                        refme = self.usersref.child(((Auth.auth().currentUser?.uid)!))
+                        refhe = self.usersref.child(metadataObj.stringValue!)
+                        
+                        refme.observeSingleEvent(of: .value, with: {(snapshot) in
+                            let infoDict = snapshot.value as? [String: AnyObject] ?? [:]
+                            name0 = (infoDict["name"] as! String)
+                            //print("friends:", infoDict["name"] as! String)
+                        })
+                        refhe.observeSingleEvent(of: .value, with: {(snapshot) in
+                            let infoDict = snapshot.value as? [String: AnyObject] ?? [:]
+                            name1 = (infoDict["name"] as! String)
+                            //print("friends:", infoDict["name"] as! String)
+                        })
+                        
                         ref0 = self.usersref.child((Auth.auth().currentUser?.uid)!).child("friends")
                         ref1 = self.usersref.child(metadataObj.stringValue!).child("friends")
                         
@@ -98,8 +115,18 @@ class QrcodeScannerController: UIViewController, AVCaptureMetadataOutputObjectsD
                                 let df = DateFormatter()
                                 df.dateFormat = "yyyy-MM-dd hh:mm:ss"
                                 let adddate = df.string(from: Date())
-                                let mdata = ["Added Time": adddate]
+                                let mdata = ["Added Time": adddate, "name": name1]
                                 ref0.child(metadataObj.stringValue!).setValue(mdata)
+                            }else{
+                                if (snapshot.hasChild(metadataObj.stringValue!)){
+                                    //self.showAlert(flag: true)
+                                }else{
+                                    let df = DateFormatter()
+                                    df.dateFormat = "yyyy-MM-dd hh:mm:ss"
+                                    let adddate = df.string(from: Date())
+                                    let mdata = ["Added Time": adddate, "name": name1]
+                                    ref0.child(metadataObj.stringValue!).setValue(mdata)
+                                }
                             }
                         }) { (error) in
                             print(error.localizedDescription)
@@ -110,9 +137,19 @@ class QrcodeScannerController: UIViewController, AVCaptureMetadataOutputObjectsD
                                 let df = DateFormatter()
                                 df.dateFormat = "yyyy-MM-dd hh:mm:ss"
                                 let adddate = df.string(from: Date())
-                                let mdata = ["Added Time": adddate]
+                                let mdata = ["Added Time": adddate, "name": name0]
                                 ref1.child((Auth.auth().currentUser?.uid)!).setValue(mdata)
                                 self.showAlert(flag: true)
+                            }else{
+                                if (snapshot.hasChild((Auth.auth().currentUser?.uid)!)){
+                                    //self.showAlert(flag: true)
+                                }else{
+                                    let df = DateFormatter()
+                                    df.dateFormat = "yyyy-MM-dd hh:mm:ss"
+                                    let adddate = df.string(from: Date())
+                                    let mdata = ["Added Time": adddate, "name": name0]
+                                    ref1.child((Auth.auth().currentUser?.uid)!).setValue(mdata)
+                                }
                             }
                         }) { (error) in
                             print(error.localizedDescription)

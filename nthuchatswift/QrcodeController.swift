@@ -10,6 +10,7 @@ class QrcodeController: UIViewController{
     let filter = CIFilter(name: "CIQRCodeGenerator")
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "我的 QR code"
         filter?.setValue(data, forKey: "inputMessage")
         filter?.setValue("Q", forKey: "inputCorrectionLevel")
         
